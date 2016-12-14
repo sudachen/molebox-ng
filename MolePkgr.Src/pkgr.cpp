@@ -186,7 +186,7 @@ MXBPAK_ERROR Molebox_Pkg_Start(
 
 	if (rw_opt == MXBPAK_PKG_OPT_REWRITE || !foobar::Path<wchar_t>(container_name).Exists())
 	{
-		ds = foobar::Win32Stream::Open(container_name, "pw+");
+		ds = foobar::Win32Stream::Open(container_name, "Prw");
 		if (!ds->Good())
 			return MXBPAK_ERROR_FILE_ACCESS_DNI;
 	}
@@ -1329,6 +1329,7 @@ MXBPAK_ERROR Molebox_Conf_Pack(XNODE* conf, MOLEBOX_NOTIFY* notify)
 			                     &logger.l))
 				throw std::runtime_error("could noty generate new executable:" +
 				                         foobar::strarg_t(Libstub4_Error_String()).Str());
+			target_exists = true;
 		}
 
 		int64_t package_dir_offs = 0;
@@ -1355,7 +1356,7 @@ MXBPAK_ERROR Molebox_Conf_Pack(XNODE* conf, MOLEBOX_NOTIFY* notify)
 
 			foobar::Path<wchar_t> package_name;
 
-			if (embedded && !target_exists)
+			if (embedded || !target_exists)
 			{
 				package_name = target;
 				if (!target_exists)

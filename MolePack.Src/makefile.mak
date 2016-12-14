@@ -17,6 +17,7 @@ clean:
 SRCDIR  = .
 OBJECTS = \
     $(OBJDIR)\main.obj \
+    $(OBJDIR)\molepack_RC.obj \
 
 LIBRARIES=libconf$(LIBSFX).lib zlib$(LIBSFX).lib expatw$(LIBSFX).lib libhash$(LIBSFX).lib molepkgr$(LIBSFX).lib libsynfo$(LIBSFX).lib
 

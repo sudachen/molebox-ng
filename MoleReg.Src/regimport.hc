@@ -8,12 +8,12 @@
 #ifndef C_once_E7FB0186_312A_4844_9FA2_11C1CF90475A
 #define C_once_E7FB0186_312A_4844_9FA2_11C1CF90475A
 
-#ifdef _LIBYOYO
+#ifdef _BUILTIN
 #define _REGIMPORT_BUILTIN
 #endif
 
-#include "string.hc"
-#include "buffer.hc"
+#include <c+/string.hc>
+#include <c+/buffer.hc>
 
 enum RR_CHARSET
   {
@@ -68,7 +68,7 @@ typedef struct _REGISTRY_RECORD
     int attr;
     wchar_t *key;
     wchar_t *dfltval;
-    YO_ARRAY *valarr;
+    C_ARRAY *valarr;
   } REGISTRY_RECORD;
 
 #ifdef _REGIMPORT_BUILTIN
@@ -169,7 +169,7 @@ static void RR_Skip_Spaces(char **text, int charset)
           {
             RR_Skip_Char(&q,'\r',charset);
             if ( RR_Get_Char(&q,charset) != '\n' )
-              __Raise(YO_ERROR_ILLFORMED,0);
+              __Raise(C_ERROR_ILLFORMED,0);
             *text = q;
           }
         else
@@ -200,7 +200,7 @@ static REGISTRY_RECORD *RR_Fetch_Key_Info(char **text, int charset)
     int kn = 0;
     wchar_t c = RR_Get_Char(text,charset);
     
-    if ( c != '[' ) __Raise(YO_ERROR_ILLFORMED,0);
+    if ( c != '[' ) __Raise(C_ERROR_ILLFORMED,0);
     
     c = RR_Peek_Char(text,charset);
     if ( c == '-' ) 
@@ -240,7 +240,7 @@ static wchar_t *RR_Fetch_String(char **text, int *len, int charset)
     wchar_t *ret = 0;
 
     if ( RR_Get_Char(text,charset) != '"' )
-      __Raise(YO_ERROR_ILLFORMED,0);
+      __Raise(C_ERROR_ILLFORMED,0);
     
     __Auto_Ptr(ret)
       {
@@ -267,7 +267,7 @@ static wchar_t *RR_Fetch_String(char **text, int *len, int charset)
                             ret[i++] = 0;
                             break;
                           default:
-                            __Raise(YO_ERROR_ILLFORMED,0);
+                            __Raise(C_ERROR_ILLFORMED,0);
                         }
                     }
                   break;
@@ -278,7 +278,7 @@ static wchar_t *RR_Fetch_String(char **text, int *len, int charset)
                   
                 default:
                   if ( c == '\n' ) 
-                    __Raise(YO_ERROR_ILLFORMED,0);
+                    __Raise(C_ERROR_ILLFORMED,0);
                   
                   ret[i++] = c;
               }
@@ -295,10 +295,10 @@ static wchar_t *RR_Fetch_String(char **text, int *len, int charset)
 static void RR_Fetch_DfltValue(char **text, REGISTRY_RECORD *irr, int charset)
   {
     if ( RR_Get_Char(text,charset) != '@' )
-      __Raise(YO_ERROR_ILLFORMED,0);
+      __Raise(C_ERROR_ILLFORMED,0);
     RR_Skip_Spaces(text,charset);
     if ( RR_Get_Char(text,charset) != '=' )
-      __Raise(YO_ERROR_ILLFORMED,0);
+      __Raise(C_ERROR_ILLFORMED,0);
     RR_Skip_Spaces(text,charset);
     free(irr->dfltval);
     irr->dfltval = __Retain(RR_Fetch_String(text,0,charset));
@@ -315,7 +315,7 @@ static uint_t RR_Fetch_Hex_Dword_(char **text, int charset)
         if ( iswxdigit(c0) )
           {
             if ( !(c1 = RR_Get_Char(&q,charset)) || !iswxdigit(c1) )
-              __Raise(YO_ERROR_ILLFORMED,0);
+              __Raise(C_ERROR_ILLFORMED,0);
             __Gogo
               {
                 char cc[] = { c0, c1, 0 };
@@ -346,13 +346,13 @@ static void *RR_Fetch_Hex_Sequence(char **text, int *data_len, int *data_type, i
           {
             *data_type = RR_Fetch_Hex_Dword_(text,charset);
             if ( RR_Get_Char(text,charset) != ')')
-              __Raise(YO_ERROR_ILLFORMED,0);
+              __Raise(C_ERROR_ILLFORMED,0);
           }
         else
           *data_type = RR_TYPE_BINARY;
         
         if ( !RR_Skip_Char(text,':',charset) )
-          __Raise(YO_ERROR_ILLFORMED,0);
+          __Raise(C_ERROR_ILLFORMED,0);
         
         RR_Skip_Spaces(text,charset);
         
@@ -388,7 +388,7 @@ static void RR_Fetch_Value(char **text, REGISTRY_RECORD *irr, int charset)
     
         RR_Skip_Spaces(text,charset);
         if ( RR_Get_Char(text,charset) != '=' )
-          __Raise(YO_ERROR_ILLFORMED,0);
+          __Raise(C_ERROR_ILLFORMED,0);
         RR_Skip_Spaces(text,charset);
     
         c = RR_Peek_Char(text,charset);
@@ -428,7 +428,7 @@ static void RR_Fetch_Value(char **text, REGISTRY_RECORD *irr, int charset)
                 irr->dfltval = __Retain(value);
               }
             else
-              __Raise(YO_ERROR_ILLFORMED,0);
+              __Raise(C_ERROR_ILLFORMED,0);
           }
       }
   }
@@ -481,7 +481,7 @@ int Detect_Registry_Charset(char **text)
   {
     int bom = Str_Find_BOM(*text);
     
-    if ( bom == YO_BOM_UTF16_LE )
+    if ( bom == C_BOM_UTF16_LE )
       return RR_CHARSET_UNICODE;
   
   #ifdef __windoze
@@ -494,7 +494,7 @@ int Detect_Registry_Charset(char **text)
 #endif
   ;
 
-void Format_Registry_Record_Quote_String(YO_BUFFER *ob, int k, int len)
+void Format_Registry_Record_Quote_String(C_BUFFER *ob, int k, int len)
 #ifdef _REGIMPORT_BUILTIN
   {
     enum { wSz = sizeof(wchar_t) };
@@ -523,7 +523,7 @@ char *Format_Registry_Record(REGISTRY_RECORD *irr, int charset)
     __Auto_Ptr(ret)
       {
         int i;
-        YO_BUFFER *ob = Buffer_Init(0);
+        C_BUFFER *ob = Buffer_Init(0);
         
         Buffer_Append(ob,L"[",wSz);
         Buffer_Append(ob,irr->key,wcslen(irr->key)*wSz);
@@ -599,7 +599,7 @@ char *Format_Registry_Record(REGISTRY_RECORD *irr, int charset)
         //else if ( charset == RR_CHRSET_ONE_BYTE_LOCALE )
         //  ret = Str_Unicode_To_Locale((wchar_t*)ob->at);
         else
-          __Raise(YO_ERROR_INVALID_PARAM,0);
+          __Raise(C_ERROR_INVALID_PARAM,0);
       }
       
     return ret;  

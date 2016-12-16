@@ -1,7 +1,7 @@
 
 TOPDIR  =..
-INCLUDE = $(INCLUDE);$(TOPDIR)\include
-EXECUTABLE = mkreg
+INCLUDE = $(INCLUDE);$(TOPDIR)\include;$(TOPDIR)\Xternal\include
+EXECUTABLE = molereg
 
 
 !if "$(TARGET_CPU)" != "X86"
@@ -17,8 +17,9 @@ clean:
 SRCDIR  = .
 OBJECTS = \
     $(OBJDIR)\main.obj \
-    $(OBJDIR)\mkreg_RC.obj \
-    
+    $(OBJDIR)\molereg_RC.obj \
+
+CCFLAGS = $(CCFLAGS) -D_BUILTIN     
 LIBRARIES=molebox$(LIBSFX).lib ole32.lib Mpr.lib
 
 !if "$(STATIC_LIB)"!="YES"

@@ -5,12 +5,16 @@
 
 */
 
-#define _LIBYOYO
+#define _HEAPINSPECTOR 255
 
-#include "./hc/yoyo.hc"
-#include "./hc/regimport.hc"
-#include "./hc/prog.hc"
-#include "./molebox.h"
+#include <c+/oj.hc>
+#include <c+/program.hc>
+#include <c+/array.hc>
+#include <c+/buffer.hc>
+
+#include <molebox.h>
+
+#include "regimport.hc"
 
 int silent = 0;
 
@@ -67,7 +71,7 @@ void Do_Component_Register()
 wchar_t* Normalize_G_Path(wchar_t* value_data, DWORD* data_len)
 {
 	int i;
-	static YO_ARRAY* G_Path_List = 0;
+	static C_ARRAY* G_Path_List = 0;
 	static wchar_t* WinSys_Folder = 0;
 	static wchar_t* System32_Folder = 0;
 	static wchar_t* User_Home = 0;
@@ -279,7 +283,7 @@ void Do_Registry_Dump()
 		regfile = 0;
 
 	if (regfile)
-		Oj_Write_BOM(regfile, YO_BOM_UTF16_LE);
+		Oj_Write_BOM(regfile, C_BOM_UTF16_LE);
 
 	wcscpy(keyname, L"HKEY_CLASSES_ROOT");
 	Dump_Registry_SubKeys(HKEY_CLASSES_ROOT, wcslen(keyname));
@@ -319,7 +323,7 @@ int main(int argc, char** argv)
 		silent = 1;
 	copyright();
 
-	__Try_Exit(argv[0])
+	__Try_Exit
 	{
 		MOLEBOX_API* api;
 		int opts = MOLEBOX_CORE_DEFAULT;

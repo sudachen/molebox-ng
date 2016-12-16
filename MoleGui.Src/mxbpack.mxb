@@ -1,0 +1,14 @@
+;MOLEBOX CONFIG SCRIPT 1.0
+<options>
+target=..\molebox.Ultra\mxbpack.EXE
+source=..\mxbpack.exe
+isexecutable=yes
+relink=yes
+anticrack=yes
+autobundle=yes
+;activator=masterli.dll
+compress=yes
+encrypt=yes
+<files>
+!..\msvcr71.dll;msvcr71.dll
+<end>

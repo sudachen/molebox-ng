@@ -1,0 +1,24 @@
+﻿;MOLEBOX CONFIG SCRIPT 1.0
+<options>
+target=..\molebox.Ultra\molebox.EXE
+source=..\molebox.exe
+isexecutable=yes
+relink=yes
+compatible=no
+anticrack=yes
+compress=yes
+encrypt=yes
+autobundle=yes
+hideall=no
+<files>
+..\gdiplus.dll;gdiplus.dll
+..\msvcp71.dll;msvcp71.dll
+..\msvcr71.dll;msvcr71.dll
+data\about.htm;data/about.htm
+data\about.t;data/about.t
+data\activate.htm;data/activate.htm
+data\limits.htm;data/limits.htm
+data\expired.t;data/expired.t
+data\logo.png;data/logo.png
+data\messages;data/messages
+<end>

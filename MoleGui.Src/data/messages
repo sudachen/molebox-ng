@@ -1,0 +1,177 @@
+180
+1:Package Options
+2:Package processing parameters
+3:Output file
+4:Browse
+5:Package password
+6:Encrypt
+7:Compress
+8:Executable package
+9:Build virtual registry
+10:Executable processing parameters
+11:Main executable
+12:Browse
+13:Packages mask
+14:with password
+15:Slice executable
+16:Enable anti-crack features
+17:Enable logging
+18:Use virtual registry
+19:Auto bundle DLL dependencies
+20:Select Package Output File
+21:Select Main Executable
+22:Executable Package (*.exe)|*.exe|External Package (*.dat)|*.dat|Another File Type (*.*)|*.*
+23:Executable Source (*.exe)|*.exe
+24:File name
+25:File path on the local disk
+26:Add F&older ...
+27:Add Folder Contents Recursively
+28:Add F&iles ...
+29:Add Files to the Current Virtual Folder
+30:Remove Fol&der ...
+31:Remove Selected Folder from Virtual File System
+32:Remove Fil&es ...
+33:Remove Selected Files From Virtual File System
+34:Edi&t ...
+35:Edit File(s) or Folder Identity
+36:&Pack ...
+37:Process Current Configuration
+38:&Options ...
+39:Package Options
+40:&About ...
+41:About This Program
+42:A&ctivate ...
+43:Activate via Internet
+44:&New
+45:New Project
+46:&Open...
+47:Open Project...
+48:&Save
+49:Save Project
+50:Save &As ...
+51:Save Project As ...
+52:E&xit
+53:Exit Program
+54:Save and &Exit
+55:Save Project and Exit
+56:&File
+57:&Tools
+58:&Edit
+59:&Help
+60:Load MXB File
+61:Save to MXB File
+62:Package Options...
+63:Pack
+64:New Subfolder
+65:Add Folder Contents Recursively
+66:Delete Folder
+67:Rename/Move Folder
+68:Add Files
+69:Delete Files
+70:Rename/Move File
+71:About This Program
+72:Save and Exit
+73:Welcome to MoleBox!
+74:Package configuration has been modified.\n\nExit without saving?\n
+75:Exit without saving
+76:Load Project
+77:MoleBox Project (*.mxb)|*.mxb
+78:Cannot read project file\n'%s'\n\n%s
+79:Project file loading error
+80:Cannot write project file\n'%s'\n\n%s
+81:MoleBox Project File Saving Error
+82:Save MoleBox Project
+83:MoleBox Project (*.mxb)|*.mxb
+84:Cannot create folder '%s'\n\n%s
+85:Subfolder Creation Error
+86:Add Files
+87:All Files (*.*)|*.*
+88:Add Folder Contents Recursively
+89:No files selected!
+90:Cannot Delete File(s)
+91:Are you sure you want to delete selected files?
+92:Delete Files
+93:No folder selected!
+94:Cannot Delete Folder
+95:Are you sure you want to delete selected folder and all its content?
+96:Delete Folder
+97:No folder selected!
+98:Cannot Rename/Move Folder
+99:VFSROOT could not be renamed or moved!
+100:Cannot Rename/Move Folder
+101:No files selected!
+102:Cannot Rename/Move Files
+103:MoleBox Virtualization Solution (OSS) 
+104:Packing...
+105:Execute A Test
+106:Break
+107:Cannot run packed executable\n\n-Reason-\n%s
+108:Close
+109:terminated
+110:finished
+111:failed to start mxbpack.exe
+112:Starting packaging process ...
+113:Please select package output file
+114:Error
+115:Please select the main executable
+116:Error
+117:Add Files
+118:File name
+119:The following files will be added
+120:Add files to
+121:Move/Rename Folder
+122:Move/Rename File
+123:Move/Rename Folder:
+124:Move Folder:
+125:Move/Rename File:
+126:Move File:
+127:New name:
+128:Move to:
+129:Move to:
+130:To subfolder:
+131:New Subfolder
+132:Create subfolder
+133:Parent folder
+134:Registered to:&nbsp;
+135:<br><font color=green size=-1>solely for evaluation purposes</font>
+136:<font color=red><b>UNREGISTERED COPY</b></font>
+137:Activate MoleBox
+138:Activation key
+139:Purchase
+140:Activate
+141:Cancel
+142:Trying to activate software via Internet...
+143:Internet Activation Failed!
+144:Activation Error
+145:Package configuration has been modified.\n\nDiscard?\n
+146:Discard package configuration
+147:Hardware ID
+148:Activation response\n(only for Web activation)
+149:Request for Web activation
+154:Web Activation Failed!
+155:Do not touch IAT
+157:Commandline
+158:.REG file
+159:Environment
+160:Do not touch RSC
+161:Put version to ENV
+162:Web Activation Succeeded!
+163:Activation Status
+164:Activation Succeeded!
+165:Hide all files
+166:Activator
+167:Select Activator
+168:Activator DLL (*.dll)|*.dll|Another File Type (*.*)|*.*
+169:File selection priority
+170:Inherit virtual environment
+171:Do NOT encrypt extra data
+172:Full registry virtualization
+173:Import registry files by mask
+174:OCX/ActiveX 
+175:DO NOT REGISTER
+176:REGISTER ON START
+177:REGISTER WHEN PACK
+178:USE EMBEDDED COPY
+179:USE EXTERNAL COPY
+180:ACCESS ERROR
+

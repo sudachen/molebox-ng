@@ -1,5 +1,5 @@
-Molebox
-MkReg
+MoleCore
+MoleReg
 LibStub4
 MolePkgr
 MolePack

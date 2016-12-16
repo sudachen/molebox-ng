@@ -1,7 +1,7 @@
 
 TOPDIR  =..
 INCLUDE = $(INCLUDE);$(TOPDIR)\include
-EXECUTABLE = molepack
+EXECUTABLE = $(PROJECT)
 
 
 !if "$(TARGET_CPU)" != "X86"
@@ -12,7 +12,7 @@ info:
 clean:
 !else
 
-!include ..\xternal\Make.rules.mak
+!include $(XTERNAL)\Make.rules.mak
 
 SRCDIR  = .
 OBJECTS = \
@@ -25,7 +25,7 @@ LIBRARIES=libconf$(LIBSFX).lib zlib$(LIBSFX).lib expatw$(LIBSFX).lib libhash$(LI
 !else
 !endif
 
-!include ..\xternal\Make.exe.mak
+!include $(XTERNAL)\Make.exe.mak
 
 !endif
 

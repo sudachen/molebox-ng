@@ -1,8 +1,7 @@
 
 TOPDIR  =..
 INCLUDE = $(INCLUDE);$(TOPDIR)\include;$(TOPDIR)\Xternal\include
-EXECUTABLE = molereg
-
+EXECUTABLE = $(PROJECT)
 
 !if "$(TARGET_CPU)" != "X86"
 all:
@@ -12,7 +11,7 @@ info:
 clean:
 !else
 
-!include ..\xternal\Make.rules.mak
+!include $(XTERNAL)\Make.rules.mak
 
 SRCDIR  = .
 OBJECTS = \
@@ -26,7 +25,7 @@ LIBRARIES=molebox$(LIBSFX).lib ole32.lib Mpr.lib
 !else
 !endif
 
-!include ..\xternal\Make.exe.mak
+!include $(XTERNAL)\Make.exe.mak
 
 !endif
 

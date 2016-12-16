@@ -1,6 +1,7 @@
 
 TOPDIR  =..
 INCLUDE = $(INCLUDE);$(TOPDIR)\include
+#STATIC  = YENO
 
 !if "$(TARGET_CPU)" != "X86"
 all:
@@ -12,17 +13,16 @@ clean:
 
 !include $(XTERNAL)\Make.rules.mak
 
+CCFLAGS = $(CCFLAGS) -D_MOLEBOX_BUILD_DLL
 SRCDIR  = .
 OBJECTS = \
-    $(OBJDIR)\pkgr.obj \
-    $(OBJDIR)\molepkgr_RC.obj \
+    $(OBJDIR)\molebox.obj \
+    $(OBJDIR)\molebox_RC.obj \
 
-LIBRARIES=libconf$(LIBSFX).lib zlib$(LIBSFX).lib expatw$(LIBSFX).lib libhash$(LIBSFX).lib libpe$(LIBSFX).lib libstub4$(LIBSFX).lib
-DLL_OPTS=-DMXBPAK_BUILD_DLL
+LIBRARIES=
 
 !if "$(STATIC_LIB)"!="YES"
 !else
-DLLLINK = $(DLLLINK) /def:exports.def
 !endif
 
 !include $(XTERNAL)\Make.dll.mak

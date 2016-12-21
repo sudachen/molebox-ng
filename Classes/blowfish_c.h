@@ -10,13 +10,13 @@ extern "C" {
 
 typedef struct _BF_CONTEXT
 {
-	unsigned int P[16 + 2];
-	unsigned int S[4][256];
+    unsigned int P[16 + 2];
+    unsigned int S[4][256];
 } BF_CONTEXT;
 
-void Blowfish_Encrypt8(const BF_CONTEXT* self, void* block8);
-void Blowfish_Decrypt8(const BF_CONTEXT* self, void* block8);
-void Blowfish_Init(BF_CONTEXT* self, const void* key, size_t key_len);
+void Blowfish_Encrypt8(const BF_CONTEXT *self, void *block8);
+void Blowfish_Decrypt8(const BF_CONTEXT *self, void *block8);
+void Blowfish_Init(BF_CONTEXT *self, const void *key, size_t key_len);
 
 #ifdef __cplusplus
 }

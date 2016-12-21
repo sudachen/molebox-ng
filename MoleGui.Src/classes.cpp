@@ -21,7 +21,7 @@
 #include <winternl.h>
 #include "xnt.h"
 #include "sources/detect_compiler.h"
-                
+
 #define _X86_ASSEMBLER
 
 /*

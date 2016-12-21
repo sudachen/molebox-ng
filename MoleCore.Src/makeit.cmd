@@ -2,4 +2,4 @@
 set MAKEIT_DIR=%~dp0
 set WORKSPACE=MOLEBOX_OSS
 
-cmd /c %XTERNAL%\makeit_proc.cmd x86 %* 
+cmd /c %XTERNAL%\makeit_proc.cmd dll %* 
